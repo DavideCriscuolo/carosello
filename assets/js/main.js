@@ -39,10 +39,10 @@ const thumbnailsEL = document.querySelector(".thumbnails");
 let activeImage = 0;
 // renderizzare la prima immagine nella dom
 
-function renderPreviewImage(index) {
-  imageEL.innerHTML = `<img class="img-fluid" src="./assets/img/${images[index].image}" alt="">`;
+function renderPreviewImage(index, arr, nodeEl) {
+  nodeEl.innerHTML = `<img class="img-fluid" src="./assets/img/${arr[index].image}" alt="${arr[index].title}">`;
 }
-renderPreviewImage(activeImage);
+renderPreviewImage(activeImage, images, imageEL);
 // aggiungere un eventListner alla freccie
 
 forwardEl.addEventListener("click", function () {
@@ -53,7 +53,7 @@ forwardEl.addEventListener("click", function () {
     activeImage = 0;
   }
   console.log(activeImage);
-  renderPreviewImage(activeImage);
+  renderPreviewImage(activeImage, images, imageEL);
 });
 
 backwardEL.addEventListener("click", function () {
@@ -64,6 +64,6 @@ backwardEL.addEventListener("click", function () {
     activeImage = images.length - 1;
   }
   console.log(activeImage);
-  renderPreviewImage(activeImage);
+  renderPreviewImage(activeImage, images, imageEL);
 });
 // generare  il markup thumbnails
