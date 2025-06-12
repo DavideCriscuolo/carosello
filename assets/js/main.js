@@ -65,9 +65,10 @@ for (let i = 0; i < images.length; i++) {
   // create the image element
   const imgEl = document.createElement("img");
   // add the img-fluid
-  imgEl.classList.add("img-fluid");
+  imgEl.classList.add("img-fluid", "w-100");
   imgEl.style.objectFit = "cover";
-  imgEl.style.aspectRatio = "16/9";
+  imgEl.style.aspectRatio = "16 / 9";
+
   // add the src attribute with the image path
   imgEl.src = `./assets/img/${image}`;
   // add the alt attribute
@@ -107,7 +108,7 @@ carouselEl.addEventListener("mouseleave", () => {
 
 /* Functions */
 function renderPreviewImage(index, arr, nodeEl) {
-  nodeEl.innerHTML = `<img class="img-fluid" src="./assets/img/${arr[index].image}" alt="${arr[index].title}">`;
+  nodeEl.innerHTML = `<img class="img-fluid w-100 object-fit-cover ratio ratio-16x9" src="./assets/img/${arr[index].image}" alt="${arr[index].title}">`;
 }
 
 function next() {
