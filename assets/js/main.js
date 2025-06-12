@@ -67,3 +67,44 @@ backwardEL.addEventListener("click", function () {
   renderPreviewImage(activeImage, images, imageEL);
 });
 // generare  il markup thumbnails
+
+//Facciamo un cliclo all interno delle immagini e ci prendiamo l oggetto imagine
+
+for (let i = 0; i < images.length; i++) {
+  const thumbnail = images[i];
+
+  //estraiamo dall oggetto immagine  il titolo e l img e poi  generiamo il markup
+
+  const { image, title } = thumbnail;
+  console.log(image, title);
+
+  //creare un elemento div
+  // -aggiungere una clase ,
+  // -creamo l elmento image con classe img-fluid,
+  // -aggiungere il percorso e alt,
+  // -appendere img all interno di col
+
+  const divEl = document.createElement("div");
+
+  divEl.classList.add("col");
+  const imgEl = document.createElement("img");
+  imgEl.classList.add("img-fluid");
+  imgEl.src = `./assets/img/${image}`;
+  imgEl.alt = title;
+  imgEl.id = i;
+  imgEl.setAttribute("data-thumb-id", i);
+  imgEl.style.objectFit = "cover";
+  imgEl.style.aspectRatio = "16/9";
+
+  divEl.appendChild(imgEl);
+  console.log(divEl);
+
+  imgEl.addEventListener("click", function () {
+    const thumbId = Number(imgEl.getAttribute("data-thumb-id"));
+    activeImage = thumbId;
+    renderPreviewImage(activeImage, images, imageEL);
+    console.log(thumbId);
+  });
+
+  thumbnailsEL.appendChild(divEl);
+}
